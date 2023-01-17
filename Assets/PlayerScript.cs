@@ -107,4 +107,10 @@ public class PlayerScript : MonoBehaviour
         Cam.position = new Vector3(camX,camY,-10); //updates cam pos through camX and camY, cam seems to break if z is changed too much
         //Cam.localScale = new Vector3(camSize,camSize,camSize);
     }
+
+
+    public double DegToRad(float angle) //simple function to convert from degrees to radians
+    {
+        return Math.PI*angle / 180.0;
+    }
 }

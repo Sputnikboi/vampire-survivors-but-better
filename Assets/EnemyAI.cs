@@ -10,25 +10,30 @@ public class EnemyAI : MonoBehaviour
     public float enemyHp=10f;
     public Transform PlayerPos;
     double angleToPlayer;
+    Vector2 PlayerVec;
+    Vector2 EnemyVec;
 
     // Start is called before the first frame update
     void Start()
     {
-        angleToPlayer= Vector2.SignedAngle(new Vector2(transform.position.x, transform.position.y),new Vector2(PlayerPos.position.x,PlayerPos.position.y));
+        //angleToPlayer= Vector2.SignedAngle(new Vector2(transform.position.x, transform.position.y),new Vector2(PlayerPos.position.x,PlayerPos.position.y));
     }
 
     // Update is called once per frame
-    void FixedUpdate()
-    {
-        //angleToPlayer= Vector2.SignedAngle;
-        //print(angleToPlayer);
+    void Update()
+    { 
+        angleToPlayer = Mathf.Atan2(PlayerPos.transform.position.y-transform.position.y,PlayerPos.transform.position.x-transform.position.x); // angle to player in radians
 
-        //transform.position -= new Vector3((float)(Math.Cos(angleToPlayer))*enemyMoveSpeed,transform.position.x-(float)(Math.Sin(angleToPlayer))*enemyMoveSpeed,0);
+        transform.position += new Vector3((float)(Math.Cos(angleToPlayer))*enemyMoveSpeed*Time.deltaTime,(float)(Math.Sin(angleToPlayer))*enemyMoveSpeed*Time.deltaTime,0); // move towards player 
+        transform.eulerAngles=new Vector3(0,0,0);
     }   
 
 
-    public double DegToRad(float angle) //simple function to convert from degrees to radians
-    {
+    public double DegToRad(float angle){ //simple function to convert from degrees to radians
+    
         return Math.PI * angle / 180.0;
     }
+    public double RadToDeg(float angle){ //simple function to convert from radians to degrees
+        return angle* (180/Math.PI);
+    } 
 }

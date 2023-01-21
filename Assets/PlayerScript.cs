@@ -8,6 +8,8 @@ public class PlayerScript : MonoBehaviour
     //remember public variables can only be changed in the unity editor
 
     //player variables
+    public int hpMax=10;
+    float hp = 10;
     float posX=1f, posY=1f; //floats that discribe the location of the player
     public float movespeedX=5f, movespeedY=5f; //floats that determine the speed of the player
     float level=1;
@@ -22,6 +24,7 @@ public class PlayerScript : MonoBehaviour
     public float panStrengthBase=10.0f; // the pan strength higher = higher pan strength remember its also dependant on frame rate
     float panStrength; //used in code
     //public float camSize=1;
+
 
     void Start()
     {
@@ -64,8 +67,9 @@ public class PlayerScript : MonoBehaviour
                 posX+=movespeedX*Time.deltaTime;
             }
         }
-
+        //transform.GetComponent<Rigidbody2D>().velocity = new Vector2(movespeedx*Time.deltaTime/(float)(Math.Sqrt(2f)),movespeedx*Time.deltaTime/(float)(Math.Sqrt(2f)));
         transform.position = new Vector3(posX,posY,10); // updates the player position based on changes to posX and posY, z value seems to change the view order of objects
+        transform.eulerAngles=new Vector3(0,0,0);
 
         //Exp handling
         if(exp > expToLvl){
@@ -106,11 +110,24 @@ public class PlayerScript : MonoBehaviour
 
         Cam.position = new Vector3(camX,camY,-10); //updates cam pos through camX and camY, cam seems to break if z is changed too much
         //Cam.localScale = new Vector3(camSize,camSize,camSize);
+
+        //debug
     }
+
+            //collisions dectections
+    void OnCollisionStay2D(Collision2D collision){
+        if(collision.gameObject.tag == "dmgOne"){
+            hp= hp-1*Time.deltaTime;
+        }
+    }
+
 
 
     public double DegToRad(float angle) //simple function to convert from degrees to radians
     {
         return Math.PI*angle / 180.0;
     }
+    public double RadToDeg(float angle){ //simple function to convert from radians to degrees
+        return angle* (180/Math.PI);
+    } 
 }

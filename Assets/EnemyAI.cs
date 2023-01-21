@@ -20,8 +20,8 @@ public class EnemyAI : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        angleToPlayer= Vector2.SignedAngle
-        print(angleToPlayer);
+        //angleToPlayer= Vector2.SignedAngle;
+        //print(angleToPlayer);
 
         //transform.position -= new Vector3((float)(Math.Cos(angleToPlayer))*enemyMoveSpeed,transform.position.x-(float)(Math.Sin(angleToPlayer))*enemyMoveSpeed,0);
     }   

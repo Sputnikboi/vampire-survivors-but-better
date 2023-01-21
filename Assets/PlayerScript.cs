@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using System;
 
 public class PlayerScript : MonoBehaviour
@@ -15,7 +16,7 @@ public class PlayerScript : MonoBehaviour
     float level=1;
     float exp=0;
     float expToLvl = 100;
-
+    public GameObject healthBar;
 
     //cam variables
     public int camMode= 0; //dictates the mode of the camera
@@ -111,10 +112,15 @@ public class PlayerScript : MonoBehaviour
         Cam.position = new Vector3(camX,camY,-10); //updates cam pos through camX and camY, cam seems to break if z is changed too much
         //Cam.localScale = new Vector3(camSize,camSize,camSize);
 
+        //Health bar
+        healthBar.GetComponent<Image>().fillAmount = hp/hpMax;
+
         //debug
+
+
     }
 
-            //collisions dectections
+    //collisions dectections
     void OnCollisionStay2D(Collision2D collision){
         if(collision.gameObject.tag == "dmgOne"){
             hp= hp-1*Time.deltaTime;

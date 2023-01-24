@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 786139303193454008}
   m_Layer: 0
   m_Name: baseEnemy
-  m_TagString: dmgOne
+  m_TagString: EnemyOne
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -101,7 +101,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyMoveSpeed: 2
   enemyDamage: 10
-  enemyHp: 10
+  enemyHp: 1
+  imunity: 0.2
+  Player: {fileID: 0}
   PlayerPos: {fileID: 0}
 --- !u!50 &786139303193454009
 Rigidbody2D:

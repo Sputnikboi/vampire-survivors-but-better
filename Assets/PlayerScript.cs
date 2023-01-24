@@ -122,7 +122,7 @@ public class PlayerScript : MonoBehaviour
 
     //collisions dectections
     void OnCollisionStay2D(Collision2D collision){
-        if(collision.gameObject.tag == "dmgOne"){
+        if(collision.gameObject.tag == "EnemyOne"){
             hp= hp-1*Time.deltaTime;
         }
     }

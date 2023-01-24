@@ -6,7 +6,7 @@ TagManager:
   tags:
   - Damage1
   - dmgOne
-  - Item1
+  - EnemyOne
   layers:
   - Default
   - TransparentFX

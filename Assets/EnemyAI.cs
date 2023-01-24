@@ -7,7 +7,9 @@ public class EnemyAI : MonoBehaviour
 {
     public float enemyMoveSpeed= 1f;
     public float enemyDamage=10f;
-    public float enemyHp=10f;
+    public float enemyHp=1f;
+    public float imunity;
+    public GameObject Player;
     public Transform PlayerPos;
     double angleToPlayer;
     Vector2 PlayerVec;
@@ -16,6 +18,8 @@ public class EnemyAI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Player = GameObject.Find("player");
+        PlayerPos=Player.transform;
         //angleToPlayer= Vector2.SignedAngle(new Vector2(transform.position.x, transform.position.y),new Vector2(PlayerPos.position.x,PlayerPos.position.y));
     }
 
@@ -26,6 +30,10 @@ public class EnemyAI : MonoBehaviour
 
         transform.position += new Vector3((float)(Math.Cos(angleToPlayer))*enemyMoveSpeed*Time.deltaTime,(float)(Math.Sin(angleToPlayer))*enemyMoveSpeed*Time.deltaTime,0); // move towards player 
         transform.eulerAngles=new Vector3(0,0,0);
+
+        if(enemyHp <= 0){
+            Destroy(gameObject);
+        }
     }   
 
 

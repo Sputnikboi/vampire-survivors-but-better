@@ -14,6 +14,7 @@ public class GunControl : MonoBehaviour
     public float bulletSize;
     public float bulletSpeed;
     public float pierce;
+    public float lifespan;
     public int mode;
     public double angleToCursor;
     Vector3 mousePos;
@@ -31,11 +32,10 @@ public class GunControl : MonoBehaviour
         if(Input.GetMouseButtonDown(0) && curCooldown<0){ //same as above
             curCooldown = 1/atkSpd;
             Instantiate(Bullet,PlayerPos.position,transform.rotation);
-            print("shoot: "+curCooldown);
         } else {
             curCooldown -= Time.deltaTime;
         }
-        //Instantiate(Bullet);
+        
         
     }
 

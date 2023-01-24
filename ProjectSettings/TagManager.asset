@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Damage1
+  - dmgOne
+  - Item1
   layers:
   - Default
   - TransparentFX

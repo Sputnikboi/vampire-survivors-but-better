@@ -5,15 +5,17 @@ using System;
 
 public class GunControl : MonoBehaviour
 {   
+    public GameObject Bullet;
     public Transform PlayerPos;
     public float dmg;
     public float atkSpd;
+    double curCooldown = 0;
     public float bulletCount;
     public float bulletSize;
     public float bulletSpeed;
     public float pierce;
     public int mode;
-    double angleToCursor;
+    public double angleToCursor;
     Vector3 mousePos;
     // Start is called before the first frame update
     void Start()
@@ -24,9 +26,18 @@ public class GunControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {   
+        
         mousePos=Input.mousePosition;
-        angleToCursor=Mathf.Atan2(mousePos[1]-Screen.height/2,mousePos[0]-Screen.width/2);//angle to cursor works 
-
-        //transform.rotation = new Vector3()
+        if(Input.GetMouseButtonDown(0) && curCooldown<0){ //same as above
+            curCooldown = 1/atkSpd;
+            Instantiate(Bullet,PlayerPos.position,transform.rotation);
+            print("shoot: "+curCooldown);
+        } else {
+            curCooldown -= Time.deltaTime;
+        }
+        //Instantiate(Bullet);
+        
     }
+
+    //Code to get the angle to the cursor from the player: angleToCursor=Mathf.Atan2(mousePos[1]-Screen.height/2,mousePos[0]-Screen.width/2);   //angle to cursor works
 }

@@ -1,18 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [CreateAssetMenu(menuName = "ItemManager", order = 1)]
 public class ItemManager : ScriptableObject {
 
     // define variables
     public int tempItemId;
-    public int ItemAmount = 1;
+    public int itemAmount = 1;
     // Start is called before the first frame update
 
+
+    ItemManager(){
+        ShowShop();
+    }
     void InitializeItem(){
         //initialize item
-        tempItemId = Random.Range(0, ItemAmount);
+        tempItemId = Random.Range(0, itemAmount);
         GenerateItem(tempItemId);
 
         //show shop
@@ -36,6 +41,14 @@ public class ItemManager : ScriptableObject {
         }
         
 
+
+    }
+
+    public static void ShowShop(){
+
+        //show shop
+        
+        
 
     }
 

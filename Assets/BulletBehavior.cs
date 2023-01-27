@@ -42,7 +42,6 @@ public class BulletBehavior : MonoBehaviour
     void Update()
     {
         transform.position += new Vector3((float)(Math.Cos(angleToCursor))*bulletSpeed*Time.deltaTime,(float)(Math.Sin(angleToCursor))*bulletSpeed*Time.deltaTime,0);
-        print(lifespan);
         if(pierce <=0 || lifespan < 0){
             Destroy(gameObject);
         }

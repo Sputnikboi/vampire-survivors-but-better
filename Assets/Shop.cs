@@ -12,10 +12,17 @@ public class Shop : MonoBehaviour {
     public int itemAmount = 1;
     private static GameObject _canvas;
     private static GameObject _healthbar;
+    private static GameObject _buttonLeft;
+    private static GameObject _buttonMid;
+    private static GameObject _buttonRight;
+    private string ItemId = "";
     
     // Start is called before the first frame update
-    public void Start() {
-        
+    public void Start()
+    {
+        _buttonLeft = GameObject.Find("Button(1)");
+        _buttonMid = GameObject.Find("Button(2)");
+        _buttonRight = GameObject.Find("Button(3)");
         _healthbar = GameObject.Find("background");
         _canvas = GameObject.Find("Scroll View");
         _canvas.SetActive(false);
@@ -28,14 +35,18 @@ public class Shop : MonoBehaviour {
     {
         if(Input.GetKeyDown(KeyCode.E)){
             ToggleShop();
+            InitializeItem();
         }
     }
     void InitializeItem(){
         //initialize item
-        tempItemId = Random.Range(0, itemAmount);
+        tempItemId = Random.Range(0, itemAmount+1);
 
+        ItemId = "Item" + tempItemId + "";
+        
         //show shop
 
+        //_buttonLeft.AddComponent<>()
     }
 
 

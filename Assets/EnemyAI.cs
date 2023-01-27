@@ -8,7 +8,7 @@ public class EnemyAI : MonoBehaviour
     public float enemyMoveSpeed= 1f;
     public float enemyDamage=10f;
     public float enemyHp=1f;
-    public float imunity;
+    public float immunity;
     public GameObject Player;
     public Transform PlayerPos;
     double angleToPlayer;

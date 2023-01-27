@@ -29,10 +29,12 @@ public class PlayerScript : MonoBehaviour
 
     void Start()
     {
+        healthBar = GameObject.Find("foreground");
         //resets the camera position on game start kinda works
+        Cam = GameObject.Find("Main Camera").transform;
         camX=transform.position.x; 
-        camY=transform.position.y; 
-        Cam.position = new Vector3(camX,camY,-10);
+        camY=transform.position.y;
+        Cam.position = new Vector3(camX, camY, -10);
     }
 
     // Update is called once per frame
@@ -122,8 +124,9 @@ public class PlayerScript : MonoBehaviour
 
     //collisions dectections
     void OnCollisionStay2D(Collision2D collision){
-        if(collision.gameObject.tag == "EnemyOne"){
-            hp= hp-1*Time.deltaTime;
+        if(collision.gameObject.tag == "EnemyOne")
+        {
+            hp = hp - 1 * Time.deltaTime;
         }
     }
 

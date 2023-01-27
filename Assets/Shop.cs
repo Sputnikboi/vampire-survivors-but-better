@@ -46,9 +46,11 @@ public class Shop : MonoBehaviour {
         //_healthbar.enabled = true;
         if (_healthbar.activeSelf)
         {
+            Time.timeScale = 0;
             _healthbar.SetActive(false);
         } else if (!_healthbar.activeSelf)
         {
+            Time.timeScale = 1;
             _healthbar.SetActive(true);
         }
     }

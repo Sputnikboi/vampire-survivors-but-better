@@ -11,7 +11,6 @@ public class PlayerScript : MonoBehaviour
     //player variables
     public int hpMax=10;
     float hp = 10;
-    float posX=1f, posY=1f; //floats that discribe the location of the player
     public float movespeedX=5f, movespeedY=5f; //floats that determine the speed of the player
     float level=1;
     float exp=0;
@@ -32,8 +31,8 @@ public class PlayerScript : MonoBehaviour
         healthBar = GameObject.Find("foreground");
         //resets the camera position on game start kinda works
         Cam = GameObject.Find("Main Camera").transform;
-        camX=transform.position.x; 
-        camY=transform.position.y;
+        camX=Cam.transform.position.x; 
+        camY=Cam.transform.position.y;
         Cam.position = new Vector3(camX, camY, -10);
     }
 
@@ -42,36 +41,35 @@ public class PlayerScript : MonoBehaviour
     {
         if(Input.GetKey(KeyCode.W)){ //basic movement code dependent on delta time
             if(Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D) ){ // check to see if the player is moving diagonal and if they are reduce movespeed by sqrt(2)
-                posY+=(movespeedY*Time.deltaTime)/(float)(Math.Sqrt(2f));
+                transform.position = new Vector3(transform.position.x, transform.position.y+(movespeedY*Time.deltaTime)/(float)(Math.Sqrt(2f)),10);
             } else{
-                posY+=movespeedY*Time.deltaTime;
+                transform.position = new Vector3(transform.position.x, transform.position.y+movespeedY*Time.deltaTime,10);
             }
         }
         if(Input.GetKey(KeyCode.S)){ //same as above
             if(Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D) ){
-                posY-=(movespeedY*Time.deltaTime)/(float)(Math.Sqrt(2f));
+                transform.position = new Vector3(transform.position.x, transform.position.y-(movespeedY*Time.deltaTime)/(float)(Math.Sqrt(2f)),10);;
             } else{
-                posY-=movespeedY*Time.deltaTime;
+                transform.position = new Vector3(transform.position.x, transform.position.y-movespeedY*Time.deltaTime,10);
             }
            
         }
         if(Input.GetKey(KeyCode.A)){ //same as above
             if(Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.W) ){
-                posX-=(movespeedX*Time.deltaTime)/(float)(Math.Sqrt(2f));
+                transform.position= new Vector3(transform.position.x-(movespeedX*Time.deltaTime)/(float)(Math.Sqrt(2f)),transform.position.y,10);
             } else{
-                posX-=movespeedX*Time.deltaTime;
+                transform.position= new Vector3(transform.position.x-movespeedX*Time.deltaTime,transform.position.y,10);
             }
             
         }
         if(Input.GetKey(KeyCode.D)){ //same as above
             if(Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.W) ){
-                posX+=(movespeedX*Time.deltaTime)/(float)(Math.Sqrt(2f));
+                transform.position= new Vector3(transform.position.x+(movespeedX*Time.deltaTime)/(float)(Math.Sqrt(2f)),transform.position.y,10);
             } else{
-                posX+=movespeedX*Time.deltaTime;
+               transform.position= new Vector3(transform.position.x+movespeedX*Time.deltaTime,transform.position.y,10);
             }
         }
         //transform.GetComponent<Rigidbody2D>().velocity = new Vector2(movespeedx*Time.deltaTime/(float)(Math.Sqrt(2f)),movespeedx*Time.deltaTime/(float)(Math.Sqrt(2f)));
-        transform.position = new Vector3(posX,posY,10); // updates the player position based on changes to posX and posY, z value seems to change the view order of objects
         transform.eulerAngles=new Vector3(0,0,0);
 
         //Exp handling

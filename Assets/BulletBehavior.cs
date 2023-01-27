@@ -7,6 +7,7 @@ public class BulletBehavior : MonoBehaviour
 {   
     public GameObject Gun;
     private GunControl gunScript;
+    string id;
     float dmg;
     float bulletSize;
     float bulletSpeed;
@@ -23,7 +24,6 @@ public class BulletBehavior : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {   
-        print("hi");
         Gun = GameObject.Find("gun");
         mousePos=Input.mousePosition;
         gunScript = Gun.GetComponent<GunControl>();
@@ -34,6 +34,7 @@ public class BulletBehavior : MonoBehaviour
         lifespan=gunScript.lifespan;
         angleToCursor=Mathf.Atan2(mousePos[1]-Screen.height/2,mousePos[0]-Screen.width/2);
         transform.localScale=new Vector3(bulletSize*0.1f,bulletSize*0.1f,1);
+        id = ""+gunScript.id;
         
         
     }
@@ -51,17 +52,11 @@ public class BulletBehavior : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D collider)
     {   
-
-        immunity=-1;
         enemy = collider.gameObject;
         enemyScript = enemy.GetComponent<EnemyAI>();
-        if( collider.gameObject.tag == "EnemyOne"&& immunity < 0){
-            enemyScript.enemyHp -= dmg;
-            immunity= enemyScript.immunity;
-            pierce -=1;
-
-        } else {
-            immunity -= Time.deltaTime;
+        if(enemyScript.TakeDamage(dmg,0,id,gunScript.atkSpd)==true){
+            pierce--;
         }
+
     }
 }

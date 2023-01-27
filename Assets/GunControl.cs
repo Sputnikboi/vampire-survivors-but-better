@@ -16,6 +16,7 @@ public class GunControl : MonoBehaviour
     public float pierce;
     public float lifespan;
     public int mode;
+    public double id;
     Vector3 mousePos;
     // Start is called before the first frame update
     void Start()
@@ -28,6 +29,7 @@ public class GunControl : MonoBehaviour
         bulletSpeed = 20;
         pierce = 1;
         lifespan = 4;
+        mode =1;
 
     }
 
@@ -36,12 +38,21 @@ public class GunControl : MonoBehaviour
     {   
         
         mousePos=Input.mousePosition;
-        if(Input.GetMouseButtonDown(0) && curCooldown<0){ //same as above
-            curCooldown = 1/atkSpd;
-            Instantiate(Bullet,PlayerPos.position,transform.rotation);
+        if(Input.GetMouseButton(0)){
+            if(mode==1&& curCooldown<0){
+                curCooldown = 1/atkSpd;
+                Instantiate(Bullet,PlayerPos.position,transform.rotation);
+                id++;
+            } else {
+                curCooldown -= Time.deltaTime;
+            } 
+        }else if(mode == 2){
+            print("fuck you");
         } else {
-            curCooldown -= Time.deltaTime;
-        }
+                curCooldown -= Time.deltaTime;
+        } 
+       
+        
         
         
     }

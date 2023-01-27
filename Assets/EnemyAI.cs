@@ -9,6 +9,8 @@ public class EnemyAI : MonoBehaviour
     public float enemyDamage=10f;
     public float enemyHp=1f;
     public float immunity;
+    float curImmunity=0.0f;
+    string lastHit;
     public GameObject Player;
     public Transform PlayerPos;
     double angleToPlayer;
@@ -17,7 +19,8 @@ public class EnemyAI : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {
+    {   
+        immunity = 1;
         Player = GameObject.Find("player");
         PlayerPos=Player.transform;
         //angleToPlayer= Vector2.SignedAngle(new Vector2(transform.position.x, transform.position.y),new Vector2(PlayerPos.position.x,PlayerPos.position.y));
@@ -34,8 +37,27 @@ public class EnemyAI : MonoBehaviour
         if(enemyHp <= 0){
             Destroy(gameObject);
         }
+        curImmunity -= Time.deltaTime;
     }   
 
+    public bool TakeDamage(float damage, float type, string id,float atkSpd){
+        if(type == 1&& curImmunity<0){
+            enemyHp -= damage;
+            curImmunity = immunity/atkSpd;
+            return true;
+        } else if(type == 0 && curImmunity<0){
+            enemyHp -= damage;
+            curImmunity = immunity;
+            lastHit = id;
+            return true;
+        } else if(type == 0 && lastHit != id){
+            enemyHp -= damage;
+            curImmunity = immunity;
+            lastHit = id;
+            return true;
+        }
+        return false;
+    }
 
     public double DegToRad(float angle){ //simple function to convert from degrees to radians
     

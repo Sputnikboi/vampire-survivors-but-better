@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 786139303193454005}
   - component: {fileID: 786139303193454009}
   - component: {fileID: 786139303193454008}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: baseEnemy
   m_TagString: EnemyOne
   m_Icon: {fileID: 0}
@@ -102,7 +102,7 @@ MonoBehaviour:
   enemyMoveSpeed: 2
   enemyDamage: 10
   enemyHp: 1
-  imunity: 0.2
+  immunity: 0
   Player: {fileID: 0}
   PlayerPos: {fileID: 0}
 --- !u!50 &786139303193454009
@@ -117,14 +117,14 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 0.0001
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0

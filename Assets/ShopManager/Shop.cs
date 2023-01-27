@@ -44,6 +44,12 @@ public class Shop : MonoBehaviour {
 
         ItemId = "Item" + tempItemId + "";
         
+        //Get ItemID from item list
+        
+        //Add Values from List to AddItem Script
+        
+        //Make sure that you dont chose between same items.
+        
         //show shop
 
         //_buttonLeft.AddComponent<>()

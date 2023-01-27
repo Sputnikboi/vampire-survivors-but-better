@@ -16,12 +16,19 @@ public class GunControl : MonoBehaviour
     public float pierce;
     public float lifespan;
     public int mode;
-    public double angleToCursor;
     Vector3 mousePos;
     // Start is called before the first frame update
     void Start()
     {
         mousePos=Input.mousePosition;
+        dmg = 1;
+        atkSpd = 2;
+        bulletCount = 1;
+        bulletSize = 5;
+        bulletSpeed = 20;
+        pierce = 1;
+        lifespan = 4;
+
     }
 
     // Update is called once per frame

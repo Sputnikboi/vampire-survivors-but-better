@@ -28,9 +28,9 @@ public class PlayerScript : MonoBehaviour
 
     void Start()
     {
-        healthBar = GameObject.Find("foreground");
-        //resets the camera position on game start kinda works
-        Cam = GameObject.Find("Main Camera").transform;
+        healthBar = GameObject.Find("foreground"); //find the healthbar object in unity
+        Cam = GameObject.Find("Main Camera").transform; //find the camera object in unity
+        //resets the camera position on game start
         camX=Cam.transform.position.x; 
         camY=Cam.transform.position.y;
         Cam.position = new Vector3(camX, camY, -10);

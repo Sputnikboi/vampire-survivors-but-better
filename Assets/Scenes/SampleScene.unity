@@ -1103,6 +1103,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Bullet: {fileID: 2397851715055903292, guid: 5901a6d7e05a9b546b8e77d92c7b181d, type: 3}
+  Laser: {fileID: 0}
   PlayerPos: {fileID: 726167954}
   dmg: 1
   atkSpd: 2
@@ -1310,7 +1311,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 726167953}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.09, y: 1.78, z: 1}
+  m_LocalPosition: {x: 0.04, y: -0.11, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2222,6 +2223,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Gun: {fileID: 0}
+  PlayerObj: {fileID: 0}
   Player: {fileID: 0}
   dmgScaleLaser: 0
 --- !u!61 &1545469935

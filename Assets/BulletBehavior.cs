@@ -54,7 +54,7 @@ public class BulletBehavior : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D collider)
     {
-        if(collider.gameObject != Player)
+        if(collider.gameObject.tag != "Environment" && collider.gameObject != Player)
         {
             enemy = collider.gameObject;
             enemyScript = enemy.GetComponent<EnemyAI>();

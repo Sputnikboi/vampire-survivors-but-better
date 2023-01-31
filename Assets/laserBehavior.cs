@@ -7,6 +7,7 @@ public class laserBehavior : MonoBehaviour
 {
     public GameObject Gun;
     private GunControl gunScript;
+    public GameObject PlayerObj;
     public Transform Player;
     public float dmgScaleLaser;
     float dmg;
@@ -26,7 +27,8 @@ public class laserBehavior : MonoBehaviour
     void Start()
     {
         dmgScaleLaser = 0.33f;
-        Player=GameObject.Find("player").transform;
+        PlayerObj=GameObject.Find("player");
+        Player=PlayerObj.transform;
         Gun = GameObject.Find("gun");
         mousePos=Input.mousePosition;
         gunScript = Gun.GetComponent<GunControl>();
@@ -61,11 +63,12 @@ public class laserBehavior : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D collider)
     {   
+        if(collider.gameObject.tag != "Environment" && collider.gameObject != PlayerObj){
+            enemy = collider.gameObject;
+            enemyScript = enemy.GetComponent<EnemyAI>();
+            enemyScript.TakeDamage(dmg*dmgScaleLaser,1,"fuck",atkSpd);
+        }
 
-        enemy = collider.gameObject;
-        enemyScript = enemy.GetComponent<EnemyAI>();
-        
-        enemyScript.TakeDamage(dmg*dmgScaleLaser,1,"fuck",atkSpd);
     }
 
     public double RadToDeg(float angle){ //simple function to convert from radians to degrees

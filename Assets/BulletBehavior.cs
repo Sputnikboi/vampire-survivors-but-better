@@ -6,6 +6,7 @@ using System;
 public class BulletBehavior : MonoBehaviour
 {   
     public GameObject Gun;
+    public GameObject Player;
     private GunControl gunScript;
     string id;
     float dmg;
@@ -23,7 +24,8 @@ public class BulletBehavior : MonoBehaviour
     
     // Start is called before the first frame update
     void Start()
-    {   
+    {
+        Player = GameObject.Find("player");
         Gun = GameObject.Find("gun");
         mousePos=Input.mousePosition;
         gunScript = Gun.GetComponent<GunControl>();
@@ -51,12 +53,16 @@ public class BulletBehavior : MonoBehaviour
     }
 
     void OnTriggerStay2D(Collider2D collider)
-    {   
-        enemy = collider.gameObject;
-        enemyScript = enemy.GetComponent<EnemyAI>();
-        if(enemyScript.TakeDamage(dmg,0,id,gunScript.atkSpd)==true){
-            pierce--;
+    {
+        if(collider.gameObject != Player)
+        {
+            enemy = collider.gameObject;
+            enemyScript = enemy.GetComponent<EnemyAI>();
+            if(enemyScript.TakeDamage(dmg,0,id,gunScript.atkSpd)==true){
+                pierce--;
+            }
         }
+
 
     }
 }

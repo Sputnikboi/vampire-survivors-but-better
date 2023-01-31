@@ -6,6 +6,7 @@ using System;
 public class GunControl : MonoBehaviour
 {   
     public GameObject Bullet;
+    public GameObject Laser;
     public Transform PlayerPos;
     public float dmg;
     public float atkSpd;
@@ -21,6 +22,7 @@ public class GunControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Laser = GameObject.Find("Laser");
         mousePos=Input.mousePosition;
         dmg = 1;
         atkSpd = 2;
@@ -35,7 +37,11 @@ public class GunControl : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {   
+    {
+        if (mode == 1 && Laser.activeSelf)
+        {
+            Laser.SetActive(false);
+        }
         
         mousePos=Input.mousePosition;
         if(Input.GetMouseButton(0)){

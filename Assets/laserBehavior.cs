@@ -26,7 +26,7 @@ public class laserBehavior : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        dmgScaleLaser = 0.33f;
+        dmgScaleLaser = 0.8f;
         PlayerObj=GameObject.Find("player");
         Player=PlayerObj.transform;
         Gun = GameObject.Find("gun");
@@ -51,11 +51,13 @@ public class laserBehavior : MonoBehaviour
                 mousePos=Input.mousePosition;
                 angleToCursor=Mathf.Atan2(mousePos[1]-Screen.height/2,mousePos[0]-Screen.width/2);
                 GetComponent<SpriteRenderer>().enabled = true;
+                GetComponent<BoxCollider2D>().enabled = true;
                 transform.rotation = Quaternion.Euler(0,0,(float)(RadToDeg((float)(angleToCursor))+90));
                 transform.position = new Vector3((float)(Math.Cos(angleToCursor))*2+Player.transform.position.x,(float)(Math.Sin(angleToCursor))*2+Player.transform.position.y,0);
-                transform.localScale=new Vector3(bulletSize*0.2f,1*bulletSpeed/20,1);
+                transform.localScale=new Vector3(bulletSize*0.2f,1*bulletSpeed/10,1);
             }else {
                 GetComponent<SpriteRenderer>().enabled = false;
+                GetComponent<BoxCollider2D>().enabled = false;
             }
         } 
 

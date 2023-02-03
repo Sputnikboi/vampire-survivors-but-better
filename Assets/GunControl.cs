@@ -24,8 +24,8 @@ public class GunControl : MonoBehaviour
     {
         Laser = GameObject.Find("Laser");
         mousePos=Input.mousePosition;
-        dmg = 1;
-        atkSpd = 2;
+        dmg = 0.5f;
+        atkSpd = 4;
         bulletCount = 1;
         bulletSize = 5;
         bulletSpeed = 20;
@@ -53,7 +53,7 @@ public class GunControl : MonoBehaviour
                 curCooldown -= Time.deltaTime;
             } 
         }else if(mode == 2){
-            print("fuck you");
+            print("have a nice day (dont)");
         } else {
                 curCooldown -= Time.deltaTime;
         } 
